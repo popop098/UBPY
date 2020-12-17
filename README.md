@@ -6,6 +6,10 @@
 
 ### 파이썬 3.6이상을 필요로 합니다.
 
+```
+pip install UBPY
+```
+
 **Using Cogs**
 ```py
 from UBPY import PostGuilds
