@@ -1,4 +1,4 @@
-import PostGuilds
+from UBPY import PostGuilds
 import discord
 from discord.ext import commands
 
