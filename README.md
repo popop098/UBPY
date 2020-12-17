@@ -20,7 +20,7 @@ class GuildCount(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.token = "UniqueBot TOKEN"
+        self.token = "UniqueBots TOKEN"
         PostGuilds.UpdateGuilds(self.bot,self.token)
 
 def setup(bot):
