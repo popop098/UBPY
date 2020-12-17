@@ -7,7 +7,8 @@ setuptools.setup(
     author="Gawi_pr",
     author_email="popop098@naver.com",
     description="UniqueBot python SDK",
-    long_description=open('README.md').read(),
+    long_description=open('README.md', 'rt', encoding='UTF8').read(),
+    long_description_content_type="text/markdown",
     url="https://github.com/popop098/UBPY",
     packages=setuptools.find_packages(),
     install_requires=[
