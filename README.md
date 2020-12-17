@@ -1,6 +1,6 @@
 # UBPY
 # 이 레포는 UniqueBot 파이썬 **비공식** SDK입니다. 
-**또한 이 레포는 SaidBySolo님의 KoreanBots비공식 sdk레포의 일부를 사용해 제작되었습니다. [URL](<https://github.com/SaidBySolo/DBKR-API-Python>)**
+### 또한 이 레포는 SaidBySolo님의 KoreanBots비공식 sdk레포의 일부를 사용해 제작되었습니다. [URL](<https://github.com/SaidBySolo/DBKR-API-Python>)
 
 ### 현재는 길드수업데이트 모듈만 존재합니다, 이 모듈은 자동으로 1시간마다 자동으로 요청을 보내고 따로 길드수를 비교하는 함수는 필요가 없습니다.
 
