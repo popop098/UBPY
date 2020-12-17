@@ -11,7 +11,7 @@
 pip install UBPY --upgrade
 ```
 
-##길드 수 업데이트
+# 길드 수 업데이트
 
 **Use not Cogs**
 ```py
