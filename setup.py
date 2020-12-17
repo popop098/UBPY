@@ -10,10 +10,14 @@ setuptools.setup(
     long_description=open('README.md').read(),
     url="https://github.com/popop098/UBPY",
     packages=setuptools.find_packages(),
+    install_requires=[
+        'aiohttp[speedup]',
+    ],
     classifiers=[
         # 패키지에 대한 태그
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent"
     ],
+    python_requires='>=3.6'
 )
