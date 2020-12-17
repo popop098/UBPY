@@ -7,8 +7,8 @@ from .PostUrl import mainurl
 URL: https://github.com/SaidBySolo/DBKR-API-Python
 """
 
-class UpdateGuilds:
-    def __init__(self, bot, token, log=True):
+class Client:
+    def __init__(self, bot, token, bot_id,log=True):
         """
         클래스 입니다.
         해당 클래스에 인자값을 주시면
@@ -19,9 +19,9 @@ class UpdateGuilds:
         self.bot = bot
         self.token = token
         loop = asyncio.get_event_loop()
-        loop.create_task(self.main_loop(bot, token, log))
+        loop.create_task(self.main_loop(bot, token, bot_id,log))
 
-    async def main_loop(self, bot, token, log):
+    async def main_loop(self, bot, token, bot_id,log):
         """
         메인 루프 함수입니다
         봇종료 전까지 30분마다 post_guild_count를 이용해서 post요청을합니다.
@@ -31,11 +31,19 @@ class UpdateGuilds:
         await self.bot.wait_until_ready()
         while not self.bot.is_closed():
             guilds = len(self.bot.guilds)
-            getres = await self.post_guild_count(token, guilds)
-            code = getres["data"]["botAccount"]["guilds"]
-            if code == guilds:
+            getguild = await self.before_guild_count(token, bot_id)
+            before = getguild["data"]["bot"]["guilds"]
+            if guilds == before:
                 if log is True:
-                    print(f"서버수를 성공적으로 갱신했어요! 현재 서버수는 {guilds}이네요.")
+                    print("서버수가 동일하네요. 잠시후에 다시요청할께요!")
+                    await asyncio.sleep(1800)
+                else:
+                    await asyncio.sleep(1800)
+            elif guilds > before:
+                getres = await self.post_guild_count(token, guilds)
+                code = getres["data"]["botAccount"]["guilds"]
+                if log is True:
+                    print(f"서버수를 성공적으로 갱신했어요! 현재 서버수는 {code}이네요.")
                     await asyncio.sleep(1800)
                 else:
                     await asyncio.sleep(1800)
@@ -53,6 +61,18 @@ class UpdateGuilds:
         headers = {"Authorization": f"Bearer {token}", "content-type": "application/json"}
         data = {"query": "query($guilds: Int!) {botAccount {guilds(patch: $guilds)}}",
                 "variables": {"guilds": guild_count}}
+        async with aiohttp.ClientSession() as cs:
+            async with cs.post(URL, headers=headers, json=data) as r:
+                response = await r.read()
+                sid = response.decode('utf-8')
+                answer = json.loads(sid)
+                return answer
+    
+    @staticmethod
+    async def before_guild_count(token, bot_id):
+        URL = mainurl
+        headers = {"Authorization": f"Bearer {token}", "content-type": "application/json"}
+        data = {"query": "query{bot(id:" f'"{bot_id}"'"){guilds}}"}
         async with aiohttp.ClientSession() as cs:
             async with cs.post(URL, headers=headers, json=data) as r:
                 response = await r.read()

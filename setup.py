@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="UBPY",
-    version="1.0",
+    version="1.9",
     license='MIT',
     author="Gawi_pr",
     author_email="popop098@naver.com",
@@ -12,7 +12,7 @@ setuptools.setup(
     url="https://github.com/popop098/UBPY",
     packages=setuptools.find_packages(),
     install_requires=[
-        'aiohttp[speedup]',
+        'aiohttp',
     ],
     classifiers=[
         # 패키지에 대한 태그

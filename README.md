@@ -8,12 +8,32 @@
 ### 파이썬 3.6이상을 필요로 합니다.
 
 ```
-pip install UBPY
+pip install UBPY --upgrade
+```
+
+##길드 수 업데이트
+
+**Use not Cogs**
+```py
+import discord
+from discord.ext import commands
+import UBPY
+bot = commands.Bot(command_prefix='!')
+#or
+bot = discord.Client()
+
+UBPY.Client(bot,token='UniqueBots TOKEN',bot_id="BOT ID")
+
+@bot.event
+async def on_ready():
+    print(f"{bot.user.name} 준비 완료.")
+
+bot.run('Discord TOKEN')
 ```
 
 **Using Cogs**
 ```py
-from UBPY import PostGuilds
+import UBPY
 import discord
 from discord.ext import commands
 
@@ -22,7 +42,8 @@ class GuildCount(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.token = "UniqueBots TOKEN"
-        PostGuilds.UpdateGuilds(self.bot,self.token)
+        self.id = "Bot ID"
+        UBPY.Client(self.bot,self.token,self.id)
 
 def setup(bot):
     bot.add_cog(GuildCount(bot))
