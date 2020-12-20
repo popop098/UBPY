@@ -33,6 +33,7 @@ bot.run('Discord TOKEN')
 ```
 
 **Using Cogs**
+*주의! 자주 리로드할경우 루프가 꼬여 여러번 루프돌수있으니 잦은 리로드는 자제바랍니다.*
 ```py
 import UBPY
 import discord
