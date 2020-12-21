@@ -110,7 +110,7 @@ class Search(commands.Cog):
                 print(i["tag"])
 
     @commands.command(name="봇검색")
-    async def _searchlist(self,ctx,ID):
+    async def _searchbot(self,ctx,ID):
         """
         불러올수있는 봇정보:
         tag, heartCount, discordVerified, guilds, id, 
@@ -124,7 +124,7 @@ class Search(commands.Cog):
             print(res["tag"])
 
     @commands.command(name="유저검색")
-    async def _searchlist(self,ctx,ID,page=1):
+    async def _searchuser(self,ctx,ID,page=1):
         """
         불러올수있는 봇정보:
         tag, heartCount, discordVerified, guilds, id, 
