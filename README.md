@@ -33,7 +33,6 @@ bot.run('Discord TOKEN')
 ```
 
 **Using Cogs**
-*주의! 자주 리로드할경우 루프가 꼬여 여러번 루프돌수있으니 잦은 리로드는 자제바랍니다.*
 ```py
 import UBPY
 import discord
@@ -99,7 +98,8 @@ class Search(commands.Cog):
     async def _searchlist(self,ctx,page=1):
         """
         리스트에서 불러올수있는 봇정보:
-        tag, heartCount, discordVerified, guilds, id, status, brief, avatar, prefix, invite, locked, library
+        tag, heartCount, discordVerified, guilds, id, 
+        status, brief, avatar, prefix, invite, locked, library, description
         """
         ser = UBPY.UBPYsearch(self.token)
         res = await ser.List(page)
@@ -113,7 +113,8 @@ class Search(commands.Cog):
     async def _searchlist(self,ctx,ID):
         """
         불러올수있는 봇정보:
-        tag, heartCount, discordVerified, guilds, id, status, brief, avatar, prefix, invite, locked, library
+        tag, heartCount, discordVerified, guilds, id, 
+        status, brief, avatar, prefix, invite, locked, library, description
         """
         ser = UBPY.UBPYsearch(self.token)
         res = await ser.search(ID=ID)
@@ -121,6 +122,21 @@ class Search(commands.Cog):
             print('error')
         else:
             print(res["tag"])
+
+    @commands.command(name="유저검색")
+    async def _searchlist(self,ctx,ID,page=1):
+        """
+        불러올수있는 봇정보:
+        tag, heartCount, discordVerified, guilds, id, 
+        status, brief, avatar, prefix, invite, locked, library, description
+        """
+        ser = UBPY.UBPYsearch(self.token)
+        res = await ser.searchuser(ID=ID,page)
+        if res == False:
+            print('error')
+        else:
+            for i in res:
+                print(i["tag"])
 
 
 def setup(bot):
