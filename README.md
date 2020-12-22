@@ -1,4 +1,4 @@
-# UBPY
+# UBPY - 맞춤법 2개 수정 버전입니다. 'sudo pip install -U git+https://github.com/fsanchir/UBPY.git'. 혼자 사용 중
 # UniqueBots 파이썬 **비공식** SDK입니다.
 # 공식 SDK- 출시되었습니다. [URL](<https://github.com/decave27/uniquebots-py-sdk>)
 ### SaidBySolo님의 KoreanBots비공식 sdk레포의 일부를 사용해 제작되었습니다. [URL](<https://github.com/SaidBySolo/DBKR-API-Python>)

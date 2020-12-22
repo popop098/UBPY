@@ -35,7 +35,7 @@ class Client:
             before = getguild["data"]["bot"]["guilds"]
             if guilds == before:
                 if log is True:
-                    print("서버수가 동일하네요. 잠시후에 다시요청할께요!")
+                    print("서버 수가 동일하네요. 잠시후에 다시 요청할게요!")
                     await asyncio.sleep(1800)
                 else:
                     await asyncio.sleep(1800)
@@ -43,13 +43,13 @@ class Client:
                 getres = await self.post_guild_count(token, guilds)
                 code = getres["data"]["botAccount"]["guilds"]
                 if log is True:
-                    print(f"서버수를 성공적으로 갱신했어요! 현재 서버수는 {code}이네요.")
+                    print(f"서버 수를 성공적으로 갱신했어요! 현재 서버 수는 {code}이네요.")
                     await asyncio.sleep(1800)
                 else:
                     await asyncio.sleep(1800)
             else:
                 if log is True:
-                    print("서버수가 동일하네요. 잠시후에 다시요청할께요!")
+                    print("서버 수가 동일하네요. 잠시 후에 다시 요청할께요!")
                     await asyncio.sleep(1800)
                 else:
                     await asyncio.sleep(1800)
